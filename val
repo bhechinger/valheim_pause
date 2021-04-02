@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+if [[ ${1} == "stop" ]]; then
+	action=-STOP
+elif [[ ${1} == "start" ]]; then
+	action=-CONT
+else
+	echo "WUT"
+fi
+
+kill ${action} $(ps -ef | grep Valheim | egrep -v "bin|grep" | awk '{print $2}')
+
